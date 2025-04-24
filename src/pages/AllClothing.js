@@ -1,4 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import GlobalStyles from "../components/GlobalStyles";
+
+import ClassicWhiteT from "../assets/images_folder/WhiteShirt.webp";
+import BlueJean from "../assets/images_folder/BlueJean.webp";
+import FloralDress from "../assets/images_folder/SummarFLoral.webp";
+import OversizedHoodie from "../assets/images_folder/Giant_hoodie.webp";
+import KidsTee from "../assets/images_folder/KidsTee.webp";
+import Wool from "../assets/images_folder/Wool.webp";
+import DenimJacket from "../assets/images_folder/denim.jpg";
+import KidsCoat from "../assets/images_folder/KidsCoat.webp";
+
+
 
 // Mock product data
 const initialProducts = [
@@ -7,7 +21,7 @@ const initialProducts = [
     name: "Classic White T-Shirt",
     category: "Men",
     price: 24.99,
-    image: "/api/placeholder/300/400",
+    image: ClassicWhiteT,
     description: "Comfortable cotton t-shirt for everyday wear",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Black", "Gray"],
@@ -18,7 +32,7 @@ const initialProducts = [
     name: "Slim Fit Jeans",
     category: "Men",
     price: 59.99,
-    image: "/api/placeholder/300/400",
+    image: BlueJean,
     description: "Stylish slim fit jeans for a modern look",
     sizes: ["30", "32", "34", "36"],
     colors: ["Blue", "Black", "Gray"],
@@ -29,7 +43,7 @@ const initialProducts = [
     name: "Summer Floral Dress",
     category: "Women",
     price: 49.99,
-    image: "/api/placeholder/300/400",
+    image: FloralDress,
     description: "Light and breezy dress perfect for summer days",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Floral", "Blue", "Pink"],
@@ -40,7 +54,7 @@ const initialProducts = [
     name: "Oversized Hoodie",
     category: "Women",
     price: 39.99,
-    image: "/api/placeholder/300/400",
+    image: OversizedHoodie,
     description: "Cozy oversized hoodie for relaxed style",
     sizes: ["S", "M", "L"],
     colors: ["Gray", "Black", "Pink"],
@@ -51,7 +65,7 @@ const initialProducts = [
     name: "Kids Graphic Tee",
     category: "Kids",
     price: 19.99,
-    image: "/api/placeholder/300/400",
+    image: KidsTee,
     description: "Fun graphic t-shirt for children",
     sizes: ["4T", "5T", "6T", "7T"],
     colors: ["Blue", "Red", "Yellow"],
@@ -62,7 +76,7 @@ const initialProducts = [
     name: "Wool Cardigan",
     category: "Women",
     price: 89.99,
-    image: "/api/placeholder/300/400",
+    image: Wool,
     description: "Warm wool cardigan for cold weather",
     sizes: ["S", "M", "L"],
     colors: ["Beige", "Gray", "Black"],
@@ -73,7 +87,7 @@ const initialProducts = [
     name: "Denim Jacket",
     category: "Men",
     price: 79.99,
-    image: "/api/placeholder/300/400",
+    image: DenimJacket,
     description: "Classic denim jacket for all seasons",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Blue", "Black"],
@@ -84,7 +98,7 @@ const initialProducts = [
     name: "Kids Winter Coat",
     category: "Kids",
     price: 69.99,
-    image: "/api/placeholder/300/400",
+    image: KidsCoat,
     description: "Warm winter coat for children",
     sizes: ["4T", "5T", "6T", "7T"],
     colors: ["Red", "Blue", "Green"],
@@ -206,23 +220,11 @@ const ShopAll = () => {
 
   return (
     <div className="shop-container">
+
       {/* Navigation Bar */}
-      <nav className="navbar">
-        <div className="logo">WEAR TREND</div>
-        <div className="nav-links">
-          <a href="/all-clothing" className="nav-link">ALL CLOTHING</a>
-          <a href="/women" className="nav-link">WOMEN</a>
-          <a href="/men" className="nav-link">MEN</a>
-          <a href="/kids" className="nav-link">KIDS</a>
-          <a href="/login" className="nav-link">LOGIN</a>
-          <button 
-            className="cart-button" 
-            onClick={() => setShowCart(!showCart)}
-          >
-            CART ({cart.reduce((total, item) => total + item.quantity, 0)})
-          </button>
-        </div>
-      </nav>
+      <Navbar />
+      <GlobalStyles />
+      
 
       {/* Page Title */}
       <div className="page-header">
@@ -312,12 +314,12 @@ const ShopAll = () => {
 
       {/* Cart Sidebar */}
       {showCart && (
-        <div className="cart-sidebar">
+        <><div className="cart-sidebar">
           <div className="cart-header">
             <h2>Your Cart</h2>
             <button className="close-cart" onClick={() => setShowCart(false)}>×</button>
           </div>
-          
+
           {cart.length === 0 ? (
             <div className="empty-cart">
               <p>Your cart is empty</p>
@@ -346,8 +348,8 @@ const ShopAll = () => {
                         </button>
                       </div>
                     </div>
-                    <button 
-                      className="remove-item" 
+                    <button
+                      className="remove-item"
                       onClick={() => removeFromCart(item.id)}
                     >
                       ×
@@ -355,7 +357,7 @@ const ShopAll = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="cart-summary">
                 <div className="cart-total">
                   <span>Total:</span>
@@ -364,8 +366,8 @@ const ShopAll = () => {
                 <button className="checkout-button">
                   Proceed to Checkout
                 </button>
-                <button 
-                  className="continue-shopping" 
+                <button
+                  className="continue-shopping"
                   onClick={() => setShowCart(false)}
                 >
                   Continue Shopping
@@ -373,7 +375,8 @@ const ShopAll = () => {
               </div>
             </>
           )}
-        </div>
+
+        </div><><Footer /></></> 
       )}
       
       {/* CSS Styles */}

@@ -1,19 +1,13 @@
+// src/pages/Home.js
 import React from "react";
+import Navbar from "../components/Navbar";
+import GlobalStyles from "../components/GlobalStyles";
 
 const Home = () => {
   return (
     <div className="home-container">
-      {/* Navigation Bar */}
-      <nav className="navbar">
-        <div className="logo">WEAR TREND</div>
-        <div className="nav-links">
-          <a href="/all-clothing" className="nav-link">ALL CLOTHING</a>
-          <a href="/women" className="nav-link">WOMEN</a>
-          <a href="/men" className="nav-link">MEN</a>
-          <a href="/kids" className="nav-link">KIDS</a>
-          <a href="/login" className="nav-link">LOGIN</a>
-        </div>
-      </nav>
+      <GlobalStyles />
+      <Navbar />
 
       {/* Hero Section */}
       <div className="hero">
@@ -26,58 +20,21 @@ const Home = () => {
 
       <style jsx>{`
         .home-container {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
+          min-height: 100vh;
         }
         
-        .navbar {
+        .hero {
+          height: 80vh;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
-          padding: 15px 30px;
-          background-color: #8B4513;
+          text-align: center;
           color: white;
+          position: relative;
+          background-image: url('/api/placeholder/1200/800');
+          background-size: cover;
+          background-position: center;
         }
-        
-        .logo {
-          font-size: 20px;
-          font-weight: bold;
-          letter-spacing: 1px;
-        }
-        
-        .nav-links {
-          display: flex;
-          align-items: center;
-          gap: 25px;
-        }
-        
-        .nav-link {
-          color: white;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: 0.5px;
-          transition: opacity 0.2s;
-          padding: 0 5px;
-        }
-        
-        .nav-link:hover {
-          opacity: 0.8;
-        }
-        
-        // .hero {
-        //   height: 80vh;
-        //   display: flex;
-        //   justify-content: center;
-        //   align-items: center;
-        //   text-align: center;
-        //   color: white;
-        //   position: relative;
-        //   background-image: url('/api/placeholder/1200/800');
-        //   background-size: cover;
-        //   background-position: center;
-        // }
         
         .hero::before {
           content: "";
@@ -97,38 +54,61 @@ const Home = () => {
         .hero h1 {
           font-size: 48px;
           margin-bottom: 10px;
-          letter-spacing: 2px;
+          letter-spacing: 3px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          animation: fadeInDown 1s ease-out;
         }
         
         .hero p {
           font-size: 18px;
           margin-bottom: 30px;
+          animation: fadeInUp 1s ease-out;
         }
         
         .shop-btn {
           display: inline-block;
-          background-color: #8B4513;
+          background: linear-gradient(to right, #8B4513, #a86935);
           color: white;
           padding: 12px 30px;
           border: none;
+          border-radius: 25px;
           font-size: 16px;
           cursor: pointer;
           text-decoration: none;
-          transition: background-color 0.3s;
+          transition: all 0.3s;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          animation: fadeIn 1.2s ease-out;
         }
         
         .shop-btn:hover {
-          background-color: #724214;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+          0% { opacity: 0; transform: translateY(-20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
         }
         
         /* Responsive adjustments */
-        @media (max-width: 768px) {
-          .nav-links {
-            gap: 15px;
+        @media (max-width: 768px) {          
+          .hero h1 {
+            font-size: 36px;
           }
           
-          .nav-link {
-            font-size: 12px;
+          .hero p {
+            font-size: 16px;
           }
         }
       `}</style>
