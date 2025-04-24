@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     const handleResetPassword = (e) => {
-        e.preventDefault(); // Prevents page refresh
+        e.preventDefault();
 
         if (!emailRegex.test(email)) {
             setError('Invalid email format.');
@@ -29,8 +29,18 @@ const ForgotPassword = () => {
             return;
         }
 
+        const userData = {
+            email: email,
+            password: password
+        };
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+
         setError('');
-        alert('Password reset successful!'); // Replace with actual backend logic
+        alert('Password reset successful!');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
     };
 
     return (
@@ -38,35 +48,34 @@ const ForgotPassword = () => {
             <nav className="navbar">Welcome to WearTrend!</nav>
             <div className="container">
                 <h2 className="title">Forgot Password</h2>
-                <form>
-                    <input 
-                        type="email" 
-                        placeholder="Enter your email" 
-                        className="input-field" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="New Password" 
-                        className="input-field" 
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)} 
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Confirm Password" 
-                        className="input-field" 
-                        value={confirmPassword} 
-                        onChange={(e) => setConfirmPassword(e.target.value)} 
-                    />
-                    {error && <p className="error-text">{error}</p>}
-                    <button className="submit-btn" onClick={handleResetPassword}>Reset Password</button>
-                </form>
-                <p className="register-text">
-                    Remembered your password?  
-                    <Link to="/login" className="register-link"> Login here</Link>
-                </p>
+                <form onSubmit={handleResetPassword}>
+    <input 
+        type="email"
+        placeholder="Enter your email"
+        className="input-field"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+    />
+    <input 
+        type="password"
+        placeholder="New Password"
+        className="input-field"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+    />
+    <input 
+        type="password"
+        placeholder="Confirm Password"
+        className="input-field"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+    />
+    {error && <p className="error-message">{error}</p>}
+
+    <button type="submit" className="reset-btn">Reset Password</button>
+</form>
+
+                <Link to="/" className="link">Back to Login</Link>
             </div>
         </div>
     );

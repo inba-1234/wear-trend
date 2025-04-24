@@ -14,31 +14,45 @@ const Register = () => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     const handleRegister = (e) => {
-        e.preventDefault(); // Prevent page refresh
-
+        e.preventDefault();
+    
         if (!fullNameRegex.test(fullName)) {
             setError('Full Name should be 3-50 characters and contain only letters & spaces.');
             return;
         }
-
+    
         if (!emailRegex.test(email)) {
             setError('Invalid email format.');
             return;
         }
-
+    
         if (!passwordRegex.test(password)) {
             setError('Password must be at least 8 characters, contain an uppercase letter, a number, and a special character.');
             return;
         }
-
+    
         if (password !== confirmPassword) {
             setError('Passwords do not match.');
             return;
         }
-
+    
+        const userData = {
+            fullName: fullName,
+            email: email,
+            password: password
+        };
+    
+        localStorage.setItem('userData', JSON.stringify(userData));
+    
         setError('');
-        alert('Registration successful!'); // Replace with actual registration logic
+        alert('Registration Successful! Please Login.');
+        
+        setFullName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
     };
+    
 
     return (
         <div>

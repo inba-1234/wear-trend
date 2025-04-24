@@ -12,21 +12,40 @@ const Login = () => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     const handleSignIn = (e) => {
-        e.preventDefault(); // Prevents page refresh
-
+        e.preventDefault();
+    
+        const storedData = JSON.parse(localStorage.getItem('userData'));
+    
+        if (!storedData) {
+            setError('No user found! Please register or reset password.');
+            return;
+        }
+    
         if (!emailRegex.test(email)) {
             setError('Invalid email format!');
             return;
         }
-
+    
         if (!passwordRegex.test(password)) {
             setError('Password must be at least 8 characters, include an uppercase letter, a number, and a special character.');
             return;
         }
-
+    
+        if (storedData.email !== email) {
+            setError('Email not found!');
+            return;
+        }
+    
+        if (storedData.password !== password) {
+            setError('Incorrect password!');
+            return;
+        }
+    
         setError('');
-        navigate('/'); // Redirect to home page after successful login
+        alert('Login Successful!');
+        navigate('/');  // Navigate to homepage
     };
+    
 
     return (
         <div>
