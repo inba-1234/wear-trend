@@ -8,20 +8,6 @@ const Footer = () => {
         <div className="footer-section">
           <h3>WEAR TREND</h3>
           <p>High Quality, Affordable, Full Comfort clothing for everyone.</p>
-          <div className="social-icons">
-            <a href="#" className="social-icon" aria-label="Facebook">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="social-icon" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="social-icon" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="social-icon" aria-label="Pinterest">
-              <i className="fab fa-pinterest-p"></i>
-            </a>
-          </div>
         </div>
 
         <div className="footer-section">
@@ -37,10 +23,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h4>HELP</h4>
-          <ul className="footer-links">
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/shipping">Shipping & Returns</a></li>
-            <li><a href="/size-guide">Size Guide</a></li>
+          <ul className="footer-links">        
             <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>
@@ -49,8 +32,6 @@ const Footer = () => {
           <h4>COMPANY</h4>
           <ul className="footer-links">
             <li><a href="/about">About Us</a></li>
-            <li><a href="/sustainability">Sustainability</a></li>
-            <li><a href="/careers">Careers</a></li>
             <li><a href="/terms">Terms & Conditions</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
           </ul>

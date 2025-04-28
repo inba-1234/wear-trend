@@ -45,7 +45,8 @@ const ForgotPassword = () => {
 
     return (
         <div>
-            <nav className="navbar">Welcome to WearTrend!</nav>
+            <nav className="topbar">Welcome to WearTrend!</nav>
+            <div className='page-container'>
             <div className="container">
                 <h2 className="title">Forgot Password</h2>
                 <form onSubmit={handleResetPassword}>
@@ -76,6 +77,7 @@ const ForgotPassword = () => {
 </form>
 
                 <Link to="/" className="link">Back to Login</Link>
+            </div>
             </div>
         </div>
     );

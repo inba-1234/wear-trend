@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from "react";
+import "../assets/styles.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import GlobalStyles from "../components/GlobalStyles";
 
-import ClassicWhiteT from "../assets/images_folder/WhiteShirt.webp";
+import ClassicWhiteT from "../assets/images_folder/ClassicWhiteT.webp";
 import BlueJean from "../assets/images_folder/BlueJean.webp";
 import FloralDress from "../assets/images_folder/SummarFLoral.webp";
 import OversizedHoodie from "../assets/images_folder/Giant_hoodie.webp";
 import KidsTee from "../assets/images_folder/KidsTee.webp";
 import Wool from "../assets/images_folder/Wool.webp";
-import DenimJacket from "../assets/images_folder/denim.jpg";
+import DenimJacket from "../assets/images_folder/DenimJacket.webp";
 import KidsCoat from "../assets/images_folder/KidsCoat.webp";
-
+import AthleticShirt from "../assets/images_folder/AthleticShirt.webp";
+import DressShirt from "../assets/images_folder/DressShirt.webp";
+import CargoShorts from "../assets/images_folder/CargoShorts.webp"; 
+import CashmereSweater from "../assets/images_folder/CashmereSweater.webp";
+import SilkBlouse from "../assets/images_folder/SilkBlouse.webp";
+import YogaPants from "../assets/images_folder/YogaPants.webp";
+import MaxiSkirt from "../assets/images_folder/MaxiSkirt.webp";
+import LeatherJacket from "../assets/images_folder/LeatherJacket.webp";
+import DinoPajamas from "../assets/images_folder/DinoPajamas.webp";
+import SchoolPolo from "../assets/images_folder/SchoolPolo.webp";
+import KidsRaincoat from "../assets/images_folder/KidsRaincoat.webp";
+import KidsOveralls from "../assets/images_folder/KidsOveralls.webp";
+import PufferVest from "../assets/images_folder/PufferVest.webp";
+import WrapDress from "../assets/images_folder/WrapDress.webp";
+import CartoonHoodie from "../assets/images_folder/CartoonHoodie.webp";
 
 
 // Mock product data
@@ -22,7 +37,7 @@ const initialProducts = [
     category: "Men",
     price: 24.99,
     image: ClassicWhiteT,
-    description: "Comfortable cotton t-shirt for everyday wear",
+    description: "Comfortable cotton t-shirt for everyday",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Black", "Gray"],
     inStock: true
@@ -44,7 +59,7 @@ const initialProducts = [
     category: "Women",
     price: 49.99,
     image: FloralDress,
-    description: "Light and breezy dress perfect for summer days",
+    description: "Light and breezy dress",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Floral", "Blue", "Pink"],
     inStock: true
@@ -102,6 +117,171 @@ const initialProducts = [
     description: "Warm winter coat for children",
     sizes: ["4T", "5T", "6T", "7T"],
     colors: ["Red", "Blue", "Green"],
+    inStock: true
+  },
+  {
+    id: 9,
+    name: "Athletic Performance Shirt",
+    category: "Men",
+    price: 34.99,
+    image: AthleticShirt,
+    description: "Moisture-wicking fabric for workouts",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["Blue", "Black", "Red", "Green"],
+    inStock: true
+  },
+  {
+    id: 10,
+    name: "Formal Dress Shirt",
+    category: "Men",
+    price: 69.99,
+    image: DressShirt,
+    description: "Crisp cotton shirt for professionals",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["White", "Light Blue", "Pink", "Navy"],
+    inStock: true
+  },
+  {
+    id: 11,
+    name: "Cargo Shorts",
+    category: "Men",
+    price: 44.99,
+    image: CargoShorts,
+    description: "Versatile shorts with multiple pockets",
+    sizes: ["30", "32", "34", "36", "38"],
+    colors: ["Khaki", "Olive", "Navy", "Black"],
+    inStock: true
+  },
+  {
+    id: 12,
+    name: "Cashmere Sweater",
+    category: "Men",
+    price: 119.99,
+    image: CashmereSweater,
+    description: "Luxurious cashmere for comfort",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Navy", "Burgundy", "Charcoal", "Camel"],
+    inStock: true
+  },
+  {
+    id: 13,
+    name: "Silk Blouse",
+    category: "Women",
+    price: 79.99,
+    image: SilkBlouse,
+    description: "Elegant silk blouse for professional",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["White", "Black", "Navy", "Burgundy"],
+    inStock: true
+  },
+  {
+    id: 14,
+    name: "Yoga Pants",
+    category: "Women",
+    price: 54.99,
+    image: YogaPants,
+    description: "comfortable pants for yoga",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Black", "Gray", "Navy", "Purple"],
+    inStock: true
+  },
+  {
+    id: 15,
+    name: "Maxi Skirt",
+    category: "Women",
+    price: 64.99,
+    image: MaxiSkirt,
+    description: "Flowing long skirt for elegant summer",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Black", "Blue", "Floral", "Burgundy"],
+    inStock: true
+  },
+  {
+    id: 16,
+    name: "Leather Jacket",
+    category: "Women",
+    price: 149.99,
+    image: LeatherJacket,
+    description: "Classic leather jacket for edgy style",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Black", "Brown", "Red"],
+    inStock: true
+  },
+  {
+    id: 17,
+    name: "Dinosaur Pajama Set",
+    category: "Kids",
+    price: 29.99,
+    image: DinoPajamas,
+    description: "Fun pajamas with dinosaur print",
+    sizes: ["2T", "3T", "4T", "5T", "6T"],
+    colors: ["Green", "Blue", "Red"],
+    inStock: true
+  },
+  {
+    id: 18,
+    name: "School Uniform Polo",
+    category: "Kids",
+    price: 22.99,
+    image: SchoolPolo,
+    description: "Durable polo shirts for school uniforms",
+    sizes: ["4T", "5T", "6T", "7T", "8T"],
+    colors: ["White", "Navy", "Light Blue"],
+    inStock: true
+  },
+  {
+    id: 19,
+    name: "Raincoat with Hood",
+    category: "Kids",
+    price: 39.99,
+    image: KidsRaincoat,
+    description: "Waterproof raincoat with fun patterns",
+    sizes: ["3T", "4T", "5T", "6T", "7T"],
+    colors: ["Yellow", "Blue", "Pink", "Rainbow"],
+    inStock: true
+  },
+  {
+    id: 20,
+    name: "Cotton Overalls",
+    category: "Kids",
+    price: 34.99,
+    image: KidsOveralls,
+    description: "Comfortable cotton overalls for playtime",
+    sizes: ["2T", "3T", "4T", "5T"],
+    colors: ["Denim", "Red", "Striped"],
+    inStock: true
+  },
+  {
+    id: 21,
+    name: "Puffer Vest",
+    category: "Men",
+    price: 59.99,
+    image: PufferVest,
+    description: "Lightweight insulated vest for layering",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Navy", "Black", "Olive"],
+    inStock: true
+  },
+  {
+    id: 22,
+    name: "Wrap Dress",
+    category: "Women",
+    price: 74.99,
+    image: WrapDress,
+    description: "Flattering wrap dress suitable for work",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Navy", "Emerald", "Burgundy"],
+    inStock: true
+  },
+  {
+    id: 23,
+    name: "Cartoon Character Hoodie",
+    category: "Kids",
+    price: 32.99,
+    image: CartoonHoodie,
+    description: "Hoodie featuring favorite cartoons",
+    sizes: ["3T", "4T", "5T", "6T", "7T"],
+    colors: ["Blue", "Red", "Purple"],
     inStock: true
   }
 ];
@@ -314,7 +494,7 @@ const ShopAll = () => {
 
       {/* Cart Sidebar */}
       {showCart && (
-        <><div className="cart-sidebar">
+        <div className="cart-sidebar">
           <div className="cart-header">
             <h2>Your Cart</h2>
             <button className="close-cart" onClick={() => setShowCart(false)}>×</button>
@@ -375,371 +555,56 @@ const ShopAll = () => {
               </div>
             </>
           )}
-
-        </div><><Footer /></></> 
+        </div>
       )}
+      
+      {/* Floating Cart Button - Added from Kids.js */}
+      <button
+        className="floating-cart-button"
+        onClick={() => setShowCart(true)}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          background: "#8B4513",
+          color: "white",
+          border: "none",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+          cursor: "pointer",
+          zIndex: 100,
+        }}
+      >
+        <span style={{ fontSize: "24px" }}>🛒</span>
+        {cart.length > 0 && (
+          <span
+            style={{
+              position: "absolute",
+              top: "0",
+              right: "0",
+              background: "red",
+              color: "white",
+              borderRadius: "50%",
+              width: "20px",
+              height: "20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "12px",
+            }}
+          >
+            {cart.reduce((total, item) => total + item.quantity, 0)}
+          </span>
+        )}
+      </button>
       
       {/* CSS Styles */}
       <style jsx>{`
-        .shop-container {
-          font-family: Arial, sans-serif;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0;
-          position: relative;
-        }
-        
-        .navbar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 30px;
-          background-color: #8B4513;
-          color: white;
-          margin-bottom: 20px;
-        }
-        
-        .logo {
-          font-size: 20px;
-          font-weight: bold;
-          letter-spacing: 1px;
-        }
-        
-        .nav-links {
-          display: flex;
-          align-items: center;
-          gap: 25px;
-        }
-        
-        .nav-link {
-          color: white;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: 0.5px;
-          transition: opacity 0.2s;
-        }
-        
-        .nav-link:hover {
-          opacity: 0.8;
-        }
-        
-        .cart-button {
-          background: none;
-          border: 1px solid white;
-          color: white;
-          padding: 5px 10px;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 500;
-          transition: all 0.3s;
-        }
-        
-        .cart-button:hover {
-          background-color: white;
-          color: #8B4513;
-        }
-        
-        .page-header {
-          text-align: center;
-          margin-bottom: 30px;
-        }
-        
-        .page-header h1 {
-          font-size: 32px;
-          margin-bottom: 10px;
-        }
-        
-        .page-header p {
-          color: #666;
-        }
-        
-        .filter-section {
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-          margin-bottom: 30px;
-          flex-wrap: wrap;
-        }
-        
-        .filter-group {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        
-        .filter-group label {
-          font-size: 14px;
-          font-weight: 500;
-        }
-        
-        .filter-group select {
-          padding: 8px 12px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 14px;
-        }
-        
-        .products-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-          gap: 30px;
-          margin-bottom: 50px;
-        }
-        
-        .product-card {
-          border: 1px solid #eee;
-          border-radius: 8px;
-          overflow: hidden;
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-image {
-          height: 300px;
-          overflow: hidden;
-        }
-        
-        .product-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s;
-        }
-        
-        .product-card:hover .product-image img {
-          transform: scale(1.05);
-        }
-        
-        .product-info {
-          padding: 15px;
-        }
-        
-        .product-info h3 {
-          margin: 0 0 5px;
-          font-size: 18px;
-        }
-        
-        .product-category {
-          color: #666;
-          font-size: 14px;
-          margin: 0 0 10px;
-        }
-        
-        .product-price {
-          font-weight: bold;
-          font-size: 18px;
-          margin: 0 0 10px;
-          color: #8B4513;
-        }
-        
-        .product-description {
-          font-size: 14px;
-          color: #555;
-          margin: 0 0 15px;
-        }
-        
-        .product-meta {
-          font-size: 13px;
-          color: #777;
-          margin-bottom: 15px;
-        }
-        
-        .sizes, .colors {
-          margin-bottom: 5px;
-        }
-        
-        .sizes span, .colors span {
-          font-weight: 500;
-        }
-        
-        .add-to-cart {
-          width: 100%;
-          padding: 10px;
-          background-color: #8B4513;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 15px;
-          transition: background-color 0.3s;
-        }
-        
-        .add-to-cart:hover {
-          background-color: #724214;
-        }
-        
-        .cart-sidebar {
-          position: fixed;
-          top: 0;
-          right: 0;
-          width: 350px;
-          height: 100vh;
-          background-color: white;
-          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-          z-index: 1000;
-          display: flex;
-          flex-direction: column;
-        }
-        
-        .cart-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 20px;
-          border-bottom: 1px solid #eee;
-        }
-        
-        .cart-header h2 {
-          margin: 0;
-          font-size: 22px;
-        }
-        
-        .close-cart {
-          background: none;
-          border: none;
-          font-size: 24px;
-          cursor: pointer;
-          color: #555;
-        }
-        
-        .empty-cart {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          flex-grow: 1;
-          padding: 20px;
-        }
-        
-        .empty-cart p {
-          font-size: 16px;
-          color: #666;
-          margin-bottom: 20px;
-        }
-        
-        .cart-items {
-          flex-grow: 1;
-          overflow-y: auto;
-          padding: 10px 20px;
-        }
-        
-        .cart-item {
-          display: flex;
-          gap: 15px;
-          padding: 15px 0;
-          border-bottom: 1px solid #eee;
-          position: relative;
-        }
-        
-        .item-image {
-          width: 80px;
-          height: 80px;
-          flex-shrink: 0;
-        }
-        
-        .item-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 4px;
-        }
-        
-        .item-details {
-          flex-grow: 1;
-        }
-        
-        .item-details h4 {
-          margin: 0 0 5px;
-          font-size: 16px;
-        }
-        
-        .item-price {
-          color: #8B4513;
-          font-weight: bold;
-          margin: 0 0 10px;
-        }
-        
-        .quantity-controls {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        
-        .quantity-controls button {
-          width: 25px;
-          height: 25px;
-          border: 1px solid #ddd;
-          background: none;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .remove-item {
-          position: absolute;
-          top: 15px;
-          right: 0;
-          background: none;
-          border: none;
-          font-size: 18px;
-          cursor: pointer;
-          color: #999;
-        }
-        
-        .cart-summary {
-          padding: 20px;
-          border-top: 1px solid #eee;
-        }
-        
-        .cart-total {
-          display: flex;
-          justify-content: space-between;
-          font-size: 18px;
-          font-weight: bold;
-          margin-bottom: 20px;
-        }
-        
-        .checkout-button {
-          width: 100%;
-          padding: 12px;
-          background-color: #8B4513;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-          font-weight: 500;
-          margin-bottom: 10px;
-          transition: background-color 0.3s;
-        }
-        
-        .checkout-button:hover {
-          background-color: #724214;
-        }
-        
-        .continue-shopping {
-          width: 100%;
-          padding: 12px;
-          background-color: white;
-          color: #8B4513;
-          border: 1px solid #8B4513;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-          font-weight: 500;
-          transition: all 0.3s;
-        }
-        
-        .continue-shopping:hover {
-          background-color: #8B4513;
-          color: white;
-        }
         
         /* Responsive styles */
         @media (max-width: 768px) {
@@ -764,6 +629,7 @@ const ShopAll = () => {
           }
         }
       `}</style>
+      <Footer/>
     </div>
   );
 };

@@ -1,31 +1,15 @@
 import React from 'react';
-import '../assets/styles.css';
 
-const ContactUs = () => {
-    return (
-        <div>
-            <header>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="clothes.html">Clothes</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-            <main>
-                <h1>Contact Us</h1>
-                <p>Email: info@clothingstore.com</p>
-                <p>Phone: (123) 456-7890</p>
-            </main>
-
-            <footer>
-                <p>&copy; 2023 Clothing E-Commerce. All rights reserved.</p>
-            </footer>
-        </div>
-    );
-};
+function ContactUs() {
+  return (
+    <div style={{ padding: '40px' }}>
+      <h1>Contact Us</h1>
+      <p>We would love to hear from you! If you have any questions, feedback, or support needs, please reach out to us.</p>
+      <p>Email: support@weartrend.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Address: 123 Fashion Street, Style City, Tamil Nadu</p>
+    </div>
+  );
+}
 
 export default ContactUs;

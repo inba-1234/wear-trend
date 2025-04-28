@@ -56,7 +56,8 @@ const Register = () => {
 
     return (
         <div>
-            <nav className="navbar">Welcome to WearTrend!</nav>
+            <nav className="topbar">Welcome to WearTrend!</nav>
+            <div className="page-container">
             <div className="container">
                 <h2 className="title">Register</h2>
                 <form>
@@ -95,6 +96,7 @@ const Register = () => {
                     Already have an account? 
                     <Link to="/login" className="register-link"> Login here</Link> 
                 </p>
+            </div>
             </div>
         </div>
     );

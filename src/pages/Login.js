@@ -49,7 +49,8 @@ const Login = () => {
 
     return (
         <div>
-            <nav className="navbar">Welcome to WearTrend!</nav>
+            <nav className="topbar">Welcome to WearTrend!</nav>
+            <div className="page-container">
             <div className="container">
                 <h2 className="title">Login</h2>
                 <form>
@@ -72,6 +73,7 @@ const Login = () => {
                     <button className="submit-btn" onClick={handleSignIn}>Sign in</button>
                 </form>
                 <p className="register-text">Don't have an account? <a href="/register" className="register-link">Create account</a></p>
+            </div>
             </div>
         </div>
     );
